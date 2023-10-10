@@ -13,9 +13,12 @@ services:
         volumes:
             - filestore:/opt/odoo/data:z
             - ./addons:/mnt/addons
-            - ./odoo.conf:/odoo.conf
+            - ./odoo.conf:/etc/odoo.conf
+            - ./requirements.txt:/mnt/requirements.txt
         restart: unless-stopped
-        command: odoo -i base --load base,web --config=odoo.conf
+        # command: odoo -i base --load base,web --config=odoo.conf
+        # command: sh -c "pip install --upgrade pip && pip install --upgrade --no-cache-dir -r /mnt/requirements.txt && odoo --config=/etc/odoo.conf"
+        command: sh -c "pip3 install -r /mnt/requirements.txt && odoo -i base --config=/etc/odoo.conf"
 
     db:
         image: postgres:15-alpine

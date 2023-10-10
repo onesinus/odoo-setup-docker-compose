@@ -1,11 +1,8 @@
 FROM python:3.10-bullseye
 
-MAINTAINER Odoo S.A. [info@odoo.com](mailto:info@odoo.com)
-
 SHELL ["/bin/bash", "-xo", "pipefail", "-c"]
 
 # Generate locale C.UTF-8 for postgres and general locale data
-
 ENV LANG C.UTF-8
 
 # Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
@@ -28,8 +25,8 @@ RUN npm install -g rtlcss
 # Install Odoo
 
 ARG ODOO_VERSION=16.0
-ARG ODOO_RELEASE=20230807
-ARG ODOO_SHA=648042fc38a4f0021ad180e1bccbbe77a5c80c2c
+ARG ODOO_RELEASE=20231010
+ARG ODOO_SHA=4a03ec31713364f570a8c49d39a5c1393d609feb
 
 ENV ODOO_VERSION=${ODOO_VERSION}
 
@@ -42,4 +39,4 @@ RUN curl -o odoo.deb -sSL "http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/o
 # Expose Odoo services
 EXPOSE 8069 8071 8072
 
-USER odoo
+# USER odoo
