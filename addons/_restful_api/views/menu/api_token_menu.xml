@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <record id="action_api_token" model="ir.actions.act_window">
+            <field name="name">Generate API Token</field>
+            <field name="res_model">api.token</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_api_token_form"/>
+            <field name="type">ir.actions.act_window</field>
+        </record>
+        <menuitem id="menu_api_token" name="Generate API Token" action="action_api_token"/>
+    </data>
+</odoo>

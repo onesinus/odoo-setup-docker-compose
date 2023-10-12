@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="view_api_token_form" model="ir.ui.view">
+            <field name="name">api.token.form</field>
+            <field name="model">api.token</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="user_id" required="1"/>
+                            <field name="api_token" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
