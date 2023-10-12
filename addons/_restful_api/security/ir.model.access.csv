@@ -1,2 +1,1 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access__restful_api__restful_api,_restful_api._restful_api,model__restful_api__restful_api,base.group_user,1,1,1,1

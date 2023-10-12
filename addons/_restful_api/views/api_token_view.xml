@@ -1,5 +1,16 @@
 <odoo>
     <data>
+      <record id="view_api_token_tree" model="ir.ui.view">
+          <field name="name">api.token.tree</field>
+          <field name="model">api.token</field>
+          <field name="arch" type="xml">
+              <tree>
+                <field name="user_id" />
+                <field name="api_token" />
+              </tree>
+          </field>
+      </record>
+
         <record id="view_api_token_form" model="ir.ui.view">
             <field name="name">api.token.form</field>
             <field name="model">api.token</field>

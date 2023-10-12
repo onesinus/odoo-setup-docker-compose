@@ -4,10 +4,7 @@ class ApiToken(models.Model):
     _name = 'api.token'
 
     user_id = fields.Many2one('res.users', string='User')
-    api_token = fields.Char(string='API Token', readonly=True)
+    api_token = fields.Char(string='API Token', readonly=True, default=lambda self: self._generate_token())
 
-    def generate_token(self):
-        self.ensure_one()
-        user = self.user_id
-        if user:
-            self.api_token = user.generate_api_token()
+    def _generate_token(self):
+        return self.user_id.generate_api_token()

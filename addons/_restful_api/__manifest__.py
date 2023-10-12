@@ -8,8 +8,10 @@
     'depends': ['base'],
     'data': [
         'views/api_token_view.xml',
-        'views/menu/api_token_menu.xml',
-        'views/res_users_views.xml',
+
+        'views/actions/api_token.xml',
+
+        'views/menu.xml',
     ],
     'installable': True,
 }

@@ -11,7 +11,7 @@ from ..utils import api_auth
 
 class CustomAPI(http.Controller):
 
-    @http.route('/api/custom/model', auth='user', methods=['GET'], type='http', csrf=False, cors='*')
+    @http.route('/api/custom/model', auth='public', methods=['GET'], type='http', csrf=False, cors='*')
     @api_auth.custom_auth
     def get_custom_models(self):
         custom_models = request.env['custom.model'].sudo().search([])
