@@ -11,9 +11,15 @@ from ..utils import api_auth
 
 class CustomAPI(http.Controller):
 
-    @http.route('/api/custom/model', auth='public', methods=['GET'], type='http', csrf=False, cors='*')
-    @api_auth.custom_auth
-    def get_custom_models(self):
+    @http.route('/health-check', auth='none', methods=['GET'], type='http', csrf=False)
+    @api_auth.check_token
+    def hello(self, **kwargs):
+        user = kwargs.get('user')
+        return f"Hello, {user.name}"
+
+    @http.route('/api/custom/model', auth='none', methods=['GET'], type='http', csrf=False)
+    @api_auth.check_token
+    def get_custom_models(self, **kwargs):
         custom_models = request.env['custom.model'].sudo().search([])
         data = [{'id': rec.id, 'name': rec.name, 'description': rec.description} for rec in custom_models]
         return request.make_response(json.dumps(data), headers=[('Content-Type', 'application/json')])
@@ -32,9 +38,9 @@ class CustomAPI(http.Controller):
     #             return response
     #     return request.not_found()
 
-    @http.route('/api/custom/model/<int:model_id>/download', auth='user', methods=['GET'], type='http', csrf=False, cors='*')
-    @api_auth.custom_auth
-    def download_pdf(self, model_id):
+    @http.route('/api/custom/model/<int:model_id>/download', auth='none', methods=['GET'], type='http', csrf=False)
+    @api_auth.check_token
+    def download_pdf(self, model_id, **kwargs):
         # Buat PDF kosong
         buffer = BytesIO()
         pdf = canvas.Canvas(buffer)
