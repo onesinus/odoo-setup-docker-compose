@@ -18,8 +18,9 @@
                 <form>
                     <sheet>
                         <group>
-                            <field name="user_id" required="1"/>
+                            <field name="user_id" required="1" attrs="{'readonly': [('id', '!=', False)]}"/>
                             <field name="api_token" readonly="1"/>
+                            <button string="Regenerate Token" name="regenerate_token" type="object" class="oe_highlight"/>
                         </group>
                     </sheet>
                 </form>
