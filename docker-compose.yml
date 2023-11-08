@@ -2,11 +2,11 @@ version: '3.1'
 services:
     odoo:
         build:
-          context: .
-          dockerfile: Dockerfile
-        container_name: odoo16
+            context: .
+            dockerfile: Dockerfile
+        container_name: odoo17
         ports:
-          - "8079:8069"
+            - "6969:8069"
         depends_on:
             - db
         tty: true
@@ -16,13 +16,11 @@ services:
             - ./odoo.conf:/etc/odoo.conf
             - ./requirements.txt:/mnt/requirements.txt
         restart: unless-stopped
-        # command: odoo -i base --load base,web --config=odoo.conf
-        # command: sh -c "pip install --upgrade pip && pip install --upgrade --no-cache-dir -r /mnt/requirements.txt && odoo --config=/etc/odoo.conf"
         command: sh -c "pip3 install -r /mnt/requirements.txt && odoo -i base --config=/etc/odoo.conf"
 
     db:
         image: postgres:15-alpine
-        container_name: odoo16_db
+        container_name: odoo17_db
         environment:
             POSTGRES_USER: "odoo"
             POSTGRES_PASSWORD: "odoo"
