@@ -1,9 +1,10 @@
 version: '3.1'
 services:
     odoo:
-        build:
-            context: .
-            dockerfile: Dockerfile
+        # build:
+        #     context: .
+        #     dockerfile: Dockerfile
+        image: odoo:17.0
         container_name: odoo17
         ports:
             - "6969:8069"
